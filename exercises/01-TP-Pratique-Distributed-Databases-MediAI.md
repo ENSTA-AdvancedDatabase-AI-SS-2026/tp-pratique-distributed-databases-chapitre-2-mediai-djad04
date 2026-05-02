@@ -4,8 +4,8 @@
 
 ---
 
-> **Nom :** ___________________________  
-> **Prénom :** ___________________________  
+> **Nom :** ARIANE 
+> **Prénom :**DJAD 
 > **Date :** ___________________________  
 > **Note :** ___ / 100
 
@@ -50,10 +50,12 @@ docker exec -it citus_master psql -U postgres -d mediAI
 📸 **Capture d'écran attendue** : résultat de `docker ps` montrant les 4 conteneurs en état `Up`
 
 > **Collez votre capture ici :**
-> 
-> ```
-> [VOTRE CAPTURE D'ÉCRAN]
-> ```
+
+![Démarrer les 4 conteneurs](captures/Screenshot2026-04-28160754.png)
+
+![Vérifier que les 4 conteneurs sont UP](captures/Screenshot2026-04-28160804.png)
+
+![Se connecter au coordinator](captures/Screenshot2026-04-28161001.png)
 
 ---
 
@@ -70,9 +72,11 @@ SELECT citus_add_node('citus_worker3', 5432);
 
 **Question 1.2.a** : Quelle est la différence entre un **coordinator** et un **worker** dans Citus ?
 
-> **Votre réponse :**
-> 
-> _______________________________________________
+> **réponse :**
+The coordinator is the main node that receives queries, plans execution, and distributes tasks across workers
+Workers are nodes that store data shards and execute the distributed parts of queries
+![Enregistrer les workers dans le cluster](captures/Screenshot2026-04-28161937.png)
+
 
 **Question 1.2.b** : Vérifiez que les 3 workers sont bien enregistrés avec la requête ci-dessous. Combien de lignes obtenez-vous ?
 
@@ -83,9 +87,8 @@ ORDER BY nodeid;
 ```
 
 > **Résultat et réponse :**
-> 
-> _______________________________________________
-
+all the workers are running 
+![verifier les workers dans le cluster](captures/Screenshot2026-04-28161937.png)
 ---
 
 ### 1.3 – Chargement du schéma et des données
@@ -115,7 +118,10 @@ SELECT 'Transactions',                 COUNT(*)              FROM Transactions;
 ```
 
 > **Résultat attendu et observé :**
-> 
+
+resultat : 
+![verifier les workers dans le cluster](captures/Screenshot2026-04-28162505.png)
+
 > | table_name | nb_lignes attendu | nb_lignes observé |
 > |---|---|---|
 > | Patients | 20 | ___ |
